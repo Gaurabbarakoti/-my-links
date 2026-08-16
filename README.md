@@ -2,32 +2,44 @@
 
 **Live:** [gaurabbarakoti.com.np](https://gaurabbarakoti.com.np)
 
-## Structure (Full Clean)
+## Current Structure (Clean & Simple)
 
 ```
 -my-links/
 ├── CNAME
-├── index.html              # 34 KB (was 648 KB)
+├── index.html
 ├── README.md
 └── assets/
     └── images/
         ├── avatar.jpg
         ├── about.jpg
-        ├── professional/   # 6 images
-        ├── bartending/     # 2 images
-        └── casual/         # 2 images
+        ├── professional-look-with-car.jpg
+        ├── formal-suit-on-bridge.jpg
+        ├── suit-with-silver-suv.jpg
+        ├── confident-suit-pose.jpg
+        ├── suit-full-body-suv.jpg
+        ├── suit-with-yamaha-mt-15.jpg
+        ├── suit-with-suv-side.jpg
+        ├── bartending-pouring-cocktail.jpg
+        ├── bartending-cocktail-garnish.jpg
+        ├── casual-outdoor-portrait.jpg
+        ├── traditional-white-kurta.jpg
+        └── bar-tender-pose.jpg
 ```
 
-### Improvements
-- All images extracted from base64 and organized by style/category
-- index.html reduced from **648 KB → 34 KB**
-- Proper folder structure for easy future updates
-- Lazy loading + async decoding kept
-- Gallery filters (All / Professional / Bartending / Casual) working
-- Responsive, modern Claude-style dark theme
+## Features
+- Clean single-file HTML (easy to edit)
+- Modern dark theme (Claude-style)
+- Gallery with filters: All / Professional / Bartending / Casual
+- Lightbox for full image view
+- Fully responsive (mobile-first)
+- Smooth scroll + reveal animations
 
-### How to update images
-Just replace files inside `assets/images/<category>/` and commit.
+## How to update
+
+1. **Change images**: Replace any file inside `assets/images/` with same name
+2. **Add new gallery image**: Upload new .jpg and add one more `<div class="gallery-item">` block in index.html
+3. **Edit text**: Just open `index.html` and change the text directly
 
 ---
 © 2026 Gaurab Barakoti · TRIDEV CORE HQ
