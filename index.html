@@ -394,7 +394,7 @@ footer a { color: var(--accent); }
 <section class="hero">
   <div class="container hero-grid">
     <div class="avatar-wrap reveal">
-      <img src="assets/images/avatar.jpg" alt="Gaurab Barakoti" class="avatar" width="280" height="280" />
+      <img src="" data-b64="assets/images/avatar.jpg.b64" alt="Gaurab Barakoti" class="avatar" width="280" height="280" />
     </div>
     <div class="hero-content reveal">
       <h1>Gaurab Barakoti</h1>
@@ -421,7 +421,7 @@ footer a { color: var(--accent); }
     </div>
     <div class="about-grid">
       <div class="about-img reveal">
-        <img src="assets/images/about.jpg" alt="Gaurab Barakoti Professional" loading="lazy" decoding="async" width="500" height="420" />
+        <img src="" data-b64="assets/images/about.jpg.b64" alt="Gaurab Barakoti Professional" loading="lazy" decoding="async" width="500" height="420" />
       </div>
       <div class="about-text reveal">
         <h3>Who I Am</h3>
@@ -495,43 +495,43 @@ footer a { color: var(--accent); }
     </div>
     <div class="gallery-grid">
       <div class="gallery-item reveal" data-category="bartending">
-        <img src="assets/images/bartending/bartending-pouring-cocktail.jpg" alt="Bartending – Pouring Cocktail" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/bartending/bartending-pouring-cocktail.jpg.b64" alt="Bartending – Pouring Cocktail" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Bartending – Pouring Cocktail</div>
       </div>
       <div class="gallery-item reveal" data-category="professional">
-        <img src="assets/images/professional/professional-look-with-car.jpg" alt="Professional Look with Car" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/professional/professional-look-with-car.jpg.b64" alt="Professional Look with Car" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Professional Look with Car</div>
       </div>
       <div class="gallery-item reveal" data-category="professional">
-        <img src="assets/images/professional/formal-suit-on-bridge.jpg" alt="Formal Suit on Bridge" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/professional/formal-suit-on-bridge.jpg.b64" alt="Formal Suit on Bridge" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Formal Suit on Bridge</div>
       </div>
       <div class="gallery-item reveal" data-category="professional">
-        <img src="assets/images/professional/suit-with-silver-suv.jpg" alt="Suit with Silver SUV" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/professional/suit-with-silver-suv.jpg.b64" alt="Suit with Silver SUV" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Suit with Silver SUV</div>
       </div>
       <div class="gallery-item reveal" data-category="casual">
-        <img src="assets/images/casual/casual-outdoor-portrait.jpg" alt="Casual Outdoor Portrait" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/casual/casual-outdoor-portrait.jpg.b64" alt="Casual Outdoor Portrait" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Casual Outdoor Portrait</div>
       </div>
       <div class="gallery-item reveal" data-category="professional">
-        <img src="assets/images/professional/classic-suit-portrait.jpg" alt="Classic Suit Portrait" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/professional/classic-suit-portrait.jpg.b64" alt="Classic Suit Portrait" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Classic Suit Portrait</div>
       </div>
       <div class="gallery-item reveal" data-category="casual">
-        <img src="assets/images/casual/traditional-white-kurta.jpg" alt="Traditional White Kurta" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/casual/traditional-white-kurta.jpg.b64" alt="Traditional White Kurta" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Traditional White Kurta</div>
       </div>
       <div class="gallery-item reveal" data-category="professional">
-        <img src="assets/images/professional/confident-suit-pose.jpg" alt="Confident Suit Pose" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/professional/confident-suit-pose.jpg.b64" alt="Confident Suit Pose" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Confident Suit Pose</div>
       </div>
       <div class="gallery-item reveal" data-category="bartending">
-        <img src="assets/images/bartending/bartending-cocktail-garnish.jpg" alt="Bartending – Cocktail Garnish" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/bartending/bartending-cocktail-garnish.jpg.b64" alt="Bartending – Cocktail Garnish" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Bartending – Cocktail Garnish</div>
       </div>
       <div class="gallery-item reveal" data-category="professional">
-        <img src="assets/images/professional/suit-with-yamaha-mt-15.jpg" alt="Suit with Yamaha MT-15" loading="lazy" decoding="async" width="400" height="500" />
+        <img src="" data-b64="assets/images/professional/suit-with-yamaha-mt-15.jpg.b64" alt="Suit with Yamaha MT-15" loading="lazy" decoding="async" width="400" height="500" />
         <div class="caption">Suit with Yamaha MT-15</div>
       </div>
     </div>
@@ -627,8 +627,6 @@ mobileMenu.querySelectorAll('a').forEach(a => {
   });
 });
 
-// Smooth scroll already via CSS
-
 // Reveal on scroll
 const reveals = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
@@ -717,6 +715,19 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
   const subject = encodeURIComponent('Message from ' + name);
   const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
   window.location.href = 'mailto:hello@gaurabbarakoti.com.np?subject=' + subject + '&body=' + body;
+});
+
+// Load base64 images from .b64 files for clean structure
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('img[data-b64]').forEach(img => {
+    const path = img.getAttribute('data-b64');
+    fetch(path)
+      .then(r => r.text())
+      .then(b64 => {
+        img.src = 'data:image/jpeg;base64,' + b64.trim();
+      })
+      .catch(e => console.warn('Image load failed', path, e));
+  });
 });
 </script>
 </body>
