@@ -513,7 +513,7 @@ section { padding: 7rem 0; position: relative; z-index: 1; }
   text-align: center; color: white; font-size: 1rem; font-weight: 500;
 }
 
-/* Connect / Social Cards */
+/* Connect / Social Cards & Official Brand Colors */
 #connect { content-visibility: auto; contain-intrinsic-size: 800px; }
 .social-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -522,11 +522,29 @@ section { padding: 7rem 0; position: relative; z-index: 1; }
 .social-card {
   padding: 1.6rem 1rem;
   text-align: center;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.social-card i { font-size: 1.8rem; color: var(--accent); margin-bottom: 0.75rem; transition: transform 0.3s; }
-.social-card span { font-weight: 600; font-size: 0.95rem; }
+.social-card i { font-size: 1.8rem; margin-bottom: 0.75rem; transition: transform 0.3s; display: inline-block; }
+.social-card span { font-weight: 600; font-size: 0.95rem; color: var(--text); }
 .social-card:hover i { transform: scale(1.15); }
+
+/* Official Brand Colors for Personal Social Cards */
+.social-grid:nth-of-type(1) .social-card:nth-child(1) i { color: #FF0000; } /* YouTube - Red */
+.social-grid:nth-of-type(1) .social-card:nth-child(2) i { color: #E1306C; } /* Instagram - Pink */
+.social-grid:nth-of-type(1) .social-card:nth-child(3) i { color: #fe2c55; } /* TikTok - Pink/Cyan */
+.social-grid:nth-of-type(1) .social-card:nth-child(4) i { color: #1877F2; } /* Facebook - Blue */
+.social-grid:nth-of-type(1) .social-card:nth-child(5) i { color: #25D366; } /* WhatsApp - Green */
+
+/* Official Brand Colors for TRIDEV CORE HQ Social Cards */
+.social-grid:nth-of-type(2) .social-card:nth-child(1) i { color: #FF0000; } /* YouTube */
+.social-grid:nth-of-type(2) .social-card:nth-child(2) i { color: #E1306C; } /* Instagram */
+.social-grid:nth-of-type(2) .social-card:nth-child(3) i { color: #fe2c55; } /* TikTok */
+.social-grid:nth-of-type(2) .social-card:nth-child(4) i { color: #1877F2; } /* Facebook */
+.social-grid:nth-of-type(2) .social-card:nth-child(5) i { color: #FF4500; } /* Reddit - Orange */
+.social-grid:nth-of-type(2) .social-card:nth-child(6) i { color: var(--accent); } /* Website */
 
 /* Contact Form */
 .contact-box {
