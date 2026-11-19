@@ -516,7 +516,7 @@ h3 { font-family: 'Space Grotesk', sans-serif; }
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  transition: opacity 0.7s var(--ease), translate 0.7s var(--ease), transform 0.25s ease-out, border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: opacity 0.5s var(--ease), translate 0.5s var(--ease), transform 0.25s ease-out, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .tilt-card::after {
@@ -568,8 +568,6 @@ h3 { font-family: 'Space Grotesk', sans-serif; }
 /* Gallery */
 .gallery {
   background: linear-gradient(180deg, rgba(12, 12, 16, 0.6), rgba(6, 6, 8, 0.9));
-  content-visibility: auto;
-  contain-intrinsic-size: auto 1000px;
 }
 
 .filter-bar {
@@ -621,7 +619,7 @@ h3 { font-family: 'Space Grotesk', sans-serif; }
   border: 1px solid var(--border);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   text-align: left;
-  transition: opacity 0.7s var(--ease), translate 0.7s var(--ease), transform 0.45s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: opacity 0.5s var(--ease), translate 0.5s var(--ease), transform 0.45s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .gallery-item img {
@@ -701,11 +699,6 @@ h3 { font-family: 'Space Grotesk', sans-serif; }
 .lb-caption { position: absolute; bottom: calc(1.2rem + var(--bot)); left: 0; right: 0; text-align: center; font-weight: 500; }
 
 /* Connect & Contact */
-#connect {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 800px;
-}
-
 .group-label {
   text-align: center;
   color: var(--muted);
@@ -810,11 +803,12 @@ footer {
 footer p { color: var(--muted); font-size: 0.92rem; }
 footer a { color: var(--accent); font-weight: 500; }
 
-/* Scroll Reveal */
-.js .reveal { opacity: 0; translate: 0 28px; }
-.js .reveal.visible { opacity: 1; translate: 0 0; }
+/* Scroll Reveal — Hero always visible immediately; below-fold safely revealed */
+.js .hero .reveal { opacity: 1; translate: none; }
+.js section:not(.hero) .reveal { opacity: 0; translate: 0 18px; }
+.js section:not(.hero) .reveal.visible { opacity: 1; translate: 0 0; }
 .js .reveal:not(.tilt-card):not(.gallery-item) {
-  transition: opacity 0.7s var(--ease), translate 0.7s var(--ease);
+  transition: opacity 0.5s var(--ease), translate 0.5s var(--ease);
 }
 
 @media (max-width: 900px) {
@@ -1108,17 +1102,42 @@ addEventListener('keydown', (e) => {
 });
 matchMedia('(min-width:901px)').addEventListener('change', (e) => e.matches && setMenu(false));
 
-// Scroll reveal
-const io = new IntersectionObserver((es) => {
-  es.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 60);
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+// Scroll reveal with safe fallback so elements never stay stuck invisible
+const revealEls = $$('section:not(.hero) .reveal');
 
-$$('.reveal').forEach((el) => io.observe(el));
+function showEl(el, delay = 0) {
+  if (!el || el.classList.contains('visible')) return;
+  if (delay > 0) {
+    setTimeout(() => el.classList.add('visible'), delay);
+  } else {
+    el.classList.add('visible');
+  }
+}
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        showEl(entry.target, Math.min(idx * 40, 160));
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.01, rootMargin: '120px 0px 120px 0px' });
+
+  revealEls.forEach((el) => io.observe(el));
+
+  setTimeout(() => {
+    revealEls.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < innerHeight + 240) {
+        showEl(el);
+        io.unobserve(el);
+      }
+    });
+  }, 800);
+} else {
+  revealEls.forEach((el) => showEl(el));
+}
 
 // Active nav link
 const links = $$('.nav-links a');
